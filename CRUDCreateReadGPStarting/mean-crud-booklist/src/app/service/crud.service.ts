@@ -29,6 +29,15 @@ export class CrudService {
     return this.httpClient.post(API_URL, data)
       .pipe(catchError(this.handleError));
   }
+
+  //Delete a book
+  DeleteBook(id: any): Observable<any> {
+    let API_URL = `${this.REST_API}/delete-book/${id}`;
+    return this.httpClient.delete(API_URL, { headers: this.httpHeaders })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   // Error 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
